@@ -29,7 +29,7 @@ html, body {
   width: 100%;
 }
 
-/* Apply box-sizing to make width calculations consistent */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -37,10 +37,10 @@ html, body {
 header {
   position: fixed;
   top: 0;
-  left: 0; /* Ensure it starts from the left */
-  width: 100%; /* This ensures the header spans the full width */
-  background-color: #79160dbe; /* Optional: to give it a background color */
-  z-index: 1000; /* Optional: to ensure it stays above other elements */
+  left: 0; 
+  width: 100%; 
+  background-color: #79160dbe;
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
 }
