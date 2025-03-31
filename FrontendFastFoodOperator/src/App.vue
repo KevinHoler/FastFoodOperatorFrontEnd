@@ -14,12 +14,12 @@ const cart = ref([]);
     </div>
   </header>
 
-  <div>
-    <PizzaList @add-to-cart="cart.push($event)" />
-  </div>
-  <div>
-    <Cart :cart="cart" @remove="cart.splice($event, 1)" />
-  </div>
+  <main>
+    <div class="content">
+      <PizzaList @add-to-cart="cart.push($event)" />
+      <Cart :cart="cart" @remove="cart.splice($event, 1)" />
+    </div>
+  </main>
 </template>
 
 <style scoped>
@@ -28,7 +28,6 @@ html, body {
   padding: 0;
   width: 100%;
 }
-
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -43,5 +42,23 @@ header {
   z-index: 1000; 
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  color: rgb(18, 17, 17);
+}
+
+main {
+  margin-top: 150px; 
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
 }
 </style>

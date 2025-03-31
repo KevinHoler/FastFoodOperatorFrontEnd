@@ -4,10 +4,10 @@
     <ul>
       <li v-for="(item, index) in cart" :key="index">
         <h3>{{ item.name }}</h3>
-        <p>Price: ${{ item.price }}</p>
+        <p>Price: {{ item.price }}kr</p>
         <button @click="$emit('remove', index)">Remove</button>
       </li>
-      <p>Total price: {{ totalPrice }}</p>
+      <p>Total price: {{ totalPrice }}kr</p>
     </ul>
   </div>
 </template>
@@ -26,7 +26,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
@@ -34,5 +33,6 @@ export default {
   border: 1px solid #ccc;
   padding: 10px;
   margin-top: 20px;
+  width: 300px;
 }
 </style>

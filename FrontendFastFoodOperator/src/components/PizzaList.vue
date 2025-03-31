@@ -4,7 +4,7 @@
     <ul>
       <li v-for="pizza in pizzas" :key="pizza.id">
         <h3>{{ pizza.name }}</h3>
-        <p>Price: ${{ pizza.price }}</p>
+        <p>Price: {{ pizza.price }}kr</p>
         <img :src="'./src/assets/pizzaimg/pizza' + pizza.id + '.jpeg'" :alt="pizza.name" />
         <button @click="$emit('add-to-cart', pizza)">Add to Cart</button>
       </li>
