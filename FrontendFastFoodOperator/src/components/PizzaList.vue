@@ -1,9 +1,6 @@
 <template>
   <div class="orderPizzaContainer">
-    <div>
-      <h1>Beställ</h1>
-      <p>1. Välj Pizza</p>
-    </div>
+    
     <div class="pizzaContainer">
       <ul>
         <li v-for="pizza in pizzas" :key="pizza.id">

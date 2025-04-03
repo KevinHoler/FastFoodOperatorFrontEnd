@@ -1,17 +1,22 @@
 <template>
+    <div class="top-container">
+          <h1>Kassa</h1>
+          <p>Din beställning</p>
+    </div>
+    <NavComponent/>
     <Cart :cart="cart" @remove="removeFromCart" />
 
 </template>
 
-
 <script>
 import Cart from '@/components/CartComponent.vue';
-
+import NavComponent from '@/components/NavComponent.vue';
 
 export default {
   name: 'CartPage',
   components: {
-    Cart
+    Cart,
+    NavComponent
   },
   props: {
     cart: Array
@@ -26,4 +31,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.top-container{
+  color: black;
+}
+</style>
 
