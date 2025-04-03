@@ -25,6 +25,11 @@ export default {
     totalPrice() {
       return this.cart.reduce((sum, item) => sum + item.price, 0);
     }
+  },
+  watch: {
+    totalPrice(newTotal) {
+      this.$emit('update-total', newTotal); // Emit the total price to the parent
+    }
   }
 }
 </script>

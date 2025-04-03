@@ -9,14 +9,6 @@ const cart = ref([]);
 </script>
 
 <template>
-  <!-- <header> -->
-    <!-- <router-view></router-view> -->
-    <!-- <img alt="FFO logo" class="logo" src="./assets/ffo.png" width="125" height="125" /> -->
-    <!-- <div>
-      <h1>Welcome to Fast Food Operator</h1>
-    </div> -->
-  <!-- </header> -->
-
   <main>
     <router-view :cart="cart" />
   </main>

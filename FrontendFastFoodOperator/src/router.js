@@ -4,6 +4,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/HomePage.vue';
 import PizzaPage from './pages/PizzaPage.vue';
 import CartPage from './pages/CartPage.vue';
+import DrinkSidesPage from './pages/DrinkSidesPage.vue';
+import { compile } from 'vue';
 
 // Skapa dina rutter
 const routes = [
@@ -21,6 +23,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: CartPage
+  },
+  {
+    path: '/drinksides',
+    name: 'DrinksSides',
+    component: DrinkSidesPage
   }
 ];
 

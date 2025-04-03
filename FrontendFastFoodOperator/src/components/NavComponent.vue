@@ -3,6 +3,7 @@
       <div class="buttonContainer">
         <button @click="goToPizzaPage">Pizza</button>
         <button @click="goToCartPage">Kassa</button>
+        <button @click="goToDrinkPage">Dryck & Tillbehör</button>
       </div>
     </div>
   </template>
@@ -16,6 +17,9 @@
       },
       goToCartPage() {
         this.$router.push({ name: 'Cart' });
+      },
+      goToDrinkPage() {
+        this.$router.push({name: 'DrinksSides'}) 
       }
     }
   }
@@ -24,30 +28,40 @@
   <style scoped>
   .nav-content {
     width: 100%;
-    background-color: #989898; /* Darker gray background */
+    background-color: #989898; 
     padding: 5px 0;
     display: flex;
     justify-content: center;
-    height: 35px; /* Set a fixed height */
+    height: 35px; 
   }
   
   .buttonContainer {
     display: flex;
     gap: 10px;
+    width: 100%; 
   }
   
   .buttonContainer button {
-    background-color: #989898; /* Slightly lighter gray for buttons */
-    color: white; /* White text */
+    background-color: #989898; 
+    color: white; 
     border: none;
-    padding: 5px 10px;
+    padding: 0 5px; 
     cursor: pointer;
     transition: background-color 0.3s;
     height: 100%; 
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    font-size: 12px; 
+    white-space: nowrap;
+    text-align: center; 
   }
   
   .buttonContainer button:hover {
-    background-color: #555; /* Even lighter gray on hover */
+    background-color: #555;
   }
+  
   </style>
+  
+
+
   

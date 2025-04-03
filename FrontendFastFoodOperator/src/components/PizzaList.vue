@@ -11,9 +11,6 @@
         </li>
       </ul>
     </div>
-    <div>
-      <CartComponent/>
-    </div>
   </div>
  
 
@@ -59,6 +56,6 @@ export default {
 }
 
 img {
-  width: 300px;
+  width: 100px;
 }
 </style>
