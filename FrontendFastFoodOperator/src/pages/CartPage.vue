@@ -1,5 +1,5 @@
 <template>
-    <Cart :cart="cart" @remove=removeFromCart() />
+    <Cart :cart="cart" @remove="removeFromCart" />
 
 </template>
 
