@@ -10,6 +10,7 @@
       <p>Total price: {{ totalPrice }}kr</p>
     </ul>
   </div>
+  <P>g</P>
 </template>
 
 <script>

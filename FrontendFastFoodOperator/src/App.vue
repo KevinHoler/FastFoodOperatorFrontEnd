@@ -1,24 +1,24 @@
 <script setup>
 import Cart from './components/CartComponent.vue';
 import PizzaList from './components/PizzaList.vue';
+import { useRoute, useRouter } from 'vue-router';
 import { ref } from 'vue';
+import HomePage from './pages/HomePage.vue';
 
 const cart = ref([]);
 </script>
 
 <template>
-  <header>
-    <img alt="FFO logo" class="logo" src="./assets/ffo.png" width="125" height="125" />
-    <div>
+  <!-- <header> -->
+    <!-- <router-view></router-view> -->
+    <!-- <img alt="FFO logo" class="logo" src="./assets/ffo.png" width="125" height="125" /> -->
+    <!-- <div>
       <h1>Welcome to Fast Food Operator</h1>
-    </div>
-  </header>
+    </div> -->
+  <!-- </header> -->
 
   <main>
-    <div class="content">
-      <PizzaList @add-to-cart="cart.push($event)" />
-      <Cart :cart="cart" @remove="cart.splice($event, 1)" />
-    </div>
+    <router-view :cart="cart" />
   </main>
 </template>
 
@@ -33,7 +33,7 @@ html, body {
   box-sizing: border-box;
 }
 
-header {
+/* header {
   position: fixed;
   top: 0;
   left: 0; 
@@ -44,11 +44,12 @@ header {
   justify-content: space-between;
   padding: 10px;
   color: rgb(18, 17, 17);
-}
+} */
 
 main {
-  margin-top: 150px; 
-  padding: 20px;
+  background: white;
+  height: 100%;
+  width: 500px;
 }
 
 .content {
