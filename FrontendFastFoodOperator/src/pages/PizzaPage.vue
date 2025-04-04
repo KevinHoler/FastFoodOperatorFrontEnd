@@ -1,9 +1,9 @@
 <template>
-        <!-- <div class="top-container">
-          <h1>Beställ</h1>
-          <p>1. Välj Pizza</p>
-        </div> -->
-        <!-- <NavComponent/> -->
+        <div class="topInfoContainer">
+      <h1 class="orderText">Beställ</h1>
+      <p class="choosePizzaText">1. Välj Pizza</p>
+    </div>
+        <NavComponent/>
         <PizzaList @add-to-cart="addToCart" />
         <button @click="goToCartPage">Go to Cart Page</button>
 </template>
@@ -36,5 +36,18 @@ export default {
 <style>
 .top-container{
   color: black;
+}
+.topInfoContainer {
+  padding: 20px;
+  color:black;
+}
+.orderText {
+  font-size: 35px;
+  font-weight: 900;
+  text-decoration-line: underline;
+}
+
+.choosePizzaText {
+  font-size: 20px;
 }
 </style>

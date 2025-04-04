@@ -1,15 +1,7 @@
 <template>
   <div class="orderPizzaContainer">
-    <div class="topInfoContainer">
-      <h1 class="orderText">Beställ</h1>
-      <p class="choosePizzaText">1. Välj Pizza</p>
-    </div>
-    <div class="categoryContainer">
-        <a @click="goToPizzaPage">Pizza</a>
-        <a @click="goToDrinkPage">Dryck</a>
-        <a href="/pizza">Tillbehör</a>
-        <a href="/pizza">Veckans Deals</a>
-    </div>
+    
+   
     <div class="pizzaContainer">
       <ul class="productContainer">
         <li class="product" v-for="pizza in pizzas" :key="pizza.id">
@@ -88,6 +80,7 @@ export default {
   gap: 10px;
   overflow-y: scroll;
   height: 647px;
+  color: black;
 }
 
 .productContainer::-webkit-scrollbar {
@@ -110,20 +103,6 @@ img {
   object-fit: cover;
 }
 
-.topInfoContainer {
-  padding: 20px;
-}
-
-.orderText {
-  font-size: 35px;
-  font-weight: 900;
-  text-decoration-line: underline;
-}
-
-.choosePizzaText {
-  font-size: 20px;
-}
-
 .productInfo {
   padding: 15px;
 }
@@ -133,11 +112,7 @@ img {
   color: black;
 }
 
-.categoryContainer {
-  background-color: #333;
-  display: flex;
-  justify-content: space-around;
-}
+
 
 .categoryContainer a {
   cursor: pointer;

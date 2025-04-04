@@ -1,10 +1,16 @@
 <template>
-    <div class="nav-content">
+    <!-- <div class="nav-content">
       <div class="buttonContainer">
         <button @click="goToPizzaPage">Pizza</button>
         <button @click="goToDrinkPage">Dryck & Tillbehör</button>
         <button @click="goToCartPage">Kassa</button>
       </div>
+    </div> -->
+     <div class="categoryContainer">
+        <a @click="goToPizzaPage">Pizza</a>
+        <a @click="goToDrinkPage">Dryck & Tillbehör</a>
+        <a @click="goToCartPage">Kassa</a>
+        <a href="/pizza">Veckans Deals</a>
     </div>
   </template>
   
@@ -59,7 +65,11 @@
   .buttonContainer button:hover {
     background-color: #555;
   }
-  
+  .categoryContainer {
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+}
   </style>
   
 
