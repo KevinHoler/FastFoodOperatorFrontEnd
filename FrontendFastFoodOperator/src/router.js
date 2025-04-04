@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage.vue';
 import PizzaPage from './pages/PizzaPage.vue';
 import CartPage from './pages/CartPage.vue';
 import DrinkSidesPage from './pages/DrinkSidesPage.vue';
+import PizzaDetails from './components/PizzaDetailComponent.vue';
 import { compile } from 'vue';
 
 // Skapa dina rutter
@@ -28,7 +29,13 @@ const routes = [
     path: '/drinksides',
     name: 'DrinksSides',
     component: DrinkSidesPage
-  }
+  },
+  {
+    path: '/pizza/:id',
+    name: 'PizzaDetails',
+    component: PizzaDetails
+  },
+
 ];
 
 // Skapa och exportera router-instansen
