@@ -1,13 +1,27 @@
 <template>
   <div class="orderPizzaContainer">
     
+    <div class="topInfoContainer">
+      <h1 class="orderText">Beställ</h1>
+      <p class="choosePizzaText">1. Välj Pizza</p>
+    </div>
+    <div class="categoryContainer">
+        <a href="/pizza">Pizza</a>
+        <a href="/pizza">Dryck</a>
+        <a href="/pizza">Tillbehör</a>
+        <a href="/pizza">Veckans Deals</a>
+    </div>
     <div class="pizzaContainer">
-      <ul>
-        <li v-for="pizza in pizzas" :key="pizza.id">
-          <h3>{{ pizza.name }}</h3>
-          <p>Price: {{ pizza.price }}kr</p>
-          <img :src="'./src/assets/pizzaimg/pizza' + pizza.id + '.jpeg'" :alt="pizza.name" />
-          <button @click="$emit('add-to-cart', pizza)">Add to Cart</button>
+      <ul class="productContainer">
+        <li class="product" v-for="pizza in pizzas" :key="pizza.id">
+          <div>
+            <img :src="'./src/assets/pizzaimg/pizza' + pizza.id + '.jpeg'" :alt="pizza.name" />
+          </div>
+          <div class="productInfo">
+            <h3 class="pizzaName">{{ pizza.name }}</h3>
+            <p>Price: {{ pizza.price }}kr</p>
+            <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> TA INTE BORT DENNA -->
+          </div>
         </li>
       </ul>
     </div>
@@ -43,19 +57,46 @@ export default {
 
 <style scoped>
 .orderPizzaContainer {
-  color:black;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.pizzaContainer ul {
+/* .pizzaContainer {
+}  */
+
+.product {
+  display: flex;
+  background: rgb(210, 210, 210);
+  height: 150px;
+  cursor: pointer;
+}
+
+.productContainer {
   padding: 0;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  height: 647px;
 }
 
-.pizzaContainer li {
-  box-sizing: border-box;
+.productContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.productContainer::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+.productContainer::-webkit-scrollbar-thumb {
+  /* background-color: #666; */
+  background-color: rgba(0, 189, 126, 0.730)
+
 }
 
 img {
-  width: 100px;
+  width: 300px;
 }
 </style>
