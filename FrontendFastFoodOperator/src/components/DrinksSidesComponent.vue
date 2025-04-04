@@ -40,7 +40,7 @@
   
   <style scoped>
   .orderPizzaContainer {
-    /* Add any necessary styles */
+    color:black;
   }
   
   .pizzaContainer ul {

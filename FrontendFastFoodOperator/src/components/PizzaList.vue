@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .orderPizzaContainer {
-  
+  color:black;
 }
 
 .pizzaContainer ul {

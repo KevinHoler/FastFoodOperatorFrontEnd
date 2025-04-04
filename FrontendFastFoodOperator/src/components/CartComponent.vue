@@ -40,5 +40,6 @@ export default {
   padding: 10px;
   margin-top: 20px;
   width: 300px;
+  color: black;
 }
 </style>
