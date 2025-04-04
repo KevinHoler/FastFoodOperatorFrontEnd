@@ -97,6 +97,41 @@ export default {
 }
 
 img {
-  width: 300px;
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.topInfoContainer {
+  padding: 20px;
+}
+
+.orderText {
+  font-size: 35px;
+  font-weight: 900;
+  text-decoration-line: underline;
+}
+
+.choosePizzaText {
+  font-size: 20px;
+}
+
+.productInfo {
+  padding: 15px;
+}
+
+.pizzaName {
+  font-size: 20px;
+  color: black;
+}
+
+.categoryContainer {
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+}
+
+.categoryContainer a {
+  /* color: white; */
 }
 </style>
