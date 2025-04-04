@@ -2,8 +2,8 @@
     <div class="nav-content">
       <div class="buttonContainer">
         <button @click="goToPizzaPage">Pizza</button>
-        <button @click="goToCartPage">Kassa</button>
         <button @click="goToDrinkPage">Dryck & Tillbehör</button>
+        <button @click="goToCartPage">Kassa</button>
       </div>
     </div>
   </template>
