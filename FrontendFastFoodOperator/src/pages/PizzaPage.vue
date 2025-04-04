@@ -1,9 +1,9 @@
 <template>
-        <div class="top-container">
+        <!-- <div class="top-container">
           <h1>Beställ</h1>
           <p>1. Välj Pizza</p>
-        </div>
-        <NavComponent/>
+        </div> -->
+        <!-- <NavComponent/> -->
         <PizzaList @add-to-cart="addToCart" />
         <button @click="goToCartPage">Go to Cart Page</button>
 </template>

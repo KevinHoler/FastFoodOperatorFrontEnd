@@ -1,13 +1,12 @@
 <template>
   <div class="orderPizzaContainer">
-    
     <div class="topInfoContainer">
       <h1 class="orderText">Beställ</h1>
       <p class="choosePizzaText">1. Välj Pizza</p>
     </div>
     <div class="categoryContainer">
-        <a href="/pizza">Pizza</a>
-        <a href="/pizza">Dryck</a>
+        <a @click="goToPizzaPage">Pizza</a>
+        <a @click="goToDrinkPage">Dryck</a>
         <a href="/pizza">Tillbehör</a>
         <a href="/pizza">Veckans Deals</a>
     </div>
@@ -50,7 +49,16 @@ export default {
       } catch (error) {
         console.error("Error fetching pizzas:", error);
       }
-    }
+    },
+    goToPizzaPage() {
+        this.$router.push({ name: 'Pizza' });
+    },
+    goToCartPage() {
+        this.$router.push({ name: 'Cart' });
+    },
+    goToDrinkPage() {
+        this.$router.push({name: 'DrinksSides'}) 
+      }
   }
 };
 </script>
@@ -132,6 +140,6 @@ img {
 }
 
 .categoryContainer a {
-  /* color: white; */
+  cursor: pointer;
 }
 </style>
