@@ -89,9 +89,9 @@ export default {
 }
 
 .lineBetweenButtons {
-  width: 2px; /* Adjust thickness of the line */
-  height: 68px; /* Adjust height to match button size */
-  background: rgb(69, 69, 69); /* Line color */
+  width: 2px;
+  height: 68px;
+  background: rgb(69, 69, 69);
 }
 
 
