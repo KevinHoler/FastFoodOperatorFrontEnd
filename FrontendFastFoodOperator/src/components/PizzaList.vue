@@ -9,6 +9,17 @@
           <div class="productInfo">
             <h3 class="pizzaName">{{ pizza.name }}</h3>
             <p>Price: {{ pizza.price }}kr</p>
+
+            <!-- Dropdown to select the pizza base (Thin, Thick, Gluten-Free) -->
+            <div class="base-selector">
+          <label for="base">Choose Base:</label>
+          <select v-model="pizza.selectedBase">
+            <option value="Thin">Thin</option>
+            <option value="Thick">Thick</option>
+            <option value="Gluten-Free">Gluten-Free</option>
+          </select>
+        </div>
+
             <button @click.stop="$emit('add-to-cart', pizza)">Add to Cart</button>
           </div>
         </li>
@@ -36,6 +47,9 @@ export default {
       try {
         const response = await axios.get("https://localhost:7259/pizzas"); // Change this if the backend URL is different
         this.pizzas = response.data;
+        this.pizzas.forEach(pizza => {
+          this.$set(pizza, 'selectedBase', 'Thin');
+        });
       } catch (error) {
         console.error("Error fetching pizzas:", error);
       }
