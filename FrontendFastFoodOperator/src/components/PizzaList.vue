@@ -45,7 +45,7 @@ export default {
   methods: {
     async fetchPizzas() {
       try {
-        const response = await axios.get("https://localhost:7259/pizzas"); // Change this if the backend URL is different
+        const response = await axios.get("https://localhost:7259/pizzas"); 
         this.pizzas = response.data;
         this.pizzas.forEach(pizza => {
           this.$set(pizza, 'selectedBase', 'Thin');

@@ -11,7 +11,9 @@
       <p>Description: {{ pizza.description }}</p>
       <h2>Ingredients:</h2>
       <ul>
-        <li v-for="ingredient in pizza.ingredients" :key="ingredient.id">{{ ingredient.name }}</li>
+        <li v-for="ingredient in pizza.ingredients" :key="ingredient">{{ ingredient }}</li>
+        <!-- om den vi gör om det till en lista av object
+        <li v-for="ingredient in pizza.ingredients" :key="ingredient.id">{{ ingredient.name }}</li> -->
       </ul>
     </div>
     <div v-else>
@@ -40,9 +42,9 @@ export default {
     async fetchPizzaDetails() {
       try {
         const pizzaId = this.$route.params.id;
-        console.log("Fetching details for pizza ID:", pizzaId); // Log the pizza ID
+        console.log("Fetching details for pizza ID:", pizzaId);
         const response = await axios.get(`https://localhost:7259/pizza/${pizzaId}`); // Adjust the URL if necessary
-        console.log("API response:", response.data); // Log the API response
+        console.log("API response:", response.data); 
         this.pizza = response.data;
       } catch (error) {
         console.error("Error fetching pizza details:", error);

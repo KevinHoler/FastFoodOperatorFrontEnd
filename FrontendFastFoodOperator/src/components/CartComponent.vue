@@ -8,9 +8,9 @@
         <button @click="$emit('remove', index)">Remove</button>
       </li>
       <p>Total price: {{ totalPrice }}kr</p>
+      <button @click="createOrder">Create Order</button>
     </ul>
   </div>
-  <P>g</P>
 </template>
 
 <script>
