@@ -6,7 +6,8 @@
             <h3>{{ drink.name }}</h3>
             <p>Price: {{ drink.price }}kr</p> 
             <img :src="'./src/assets/pizzaimg/drink' + drink.id + '.jpg'" :alt="drink.name" />
-            <button @click="$emit('add-to-cart', drink)">Add to Cart</button>
+            
+            <button @click.stop="$emit('add-to-cart',  { ...drink, type: 'drink' })">Add to Cart</button>
           </li>
         </ul>
       </div>

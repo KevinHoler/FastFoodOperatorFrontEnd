@@ -20,7 +20,7 @@
           </select>
         </div>
 
-            <button @click.stop="$emit('add-to-cart', pizza)">Add to Cart</button>
+        <button @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Add to Cart</button>
           </div>
         </li>
       </ul>
@@ -47,9 +47,11 @@ export default {
       try {
         const response = await axios.get("https://localhost:7259/pizzas"); 
         this.pizzas = response.data;
-        this.pizzas.forEach(pizza => {
-          this.$set(pizza, 'selectedBase', 'Thin');
-        });
+        this.pizzas = response.data.map(pizza => ({
+  ...pizza,
+  selectedBase: 'Thin'
+}));
+
       } catch (error) {
         console.error("Error fetching pizzas:", error);
       }
