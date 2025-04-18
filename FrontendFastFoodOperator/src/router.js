@@ -7,7 +7,8 @@ import CartPage from './pages/CartPage.vue';
 import DrinkSidesPage from './pages/DrinkSidesPage.vue';
 import PizzaDetails from './components/PizzaDetailComponent.vue';
 import { compile } from 'vue';
-import Oders from './components/Oders.vue';
+import KitchenPage from './pages/KitchenView.vue';
+import RestaurantPage from './pages/restaurantView.vue';
 
 // Skapa dina rutter
 const routes = [
@@ -39,9 +40,14 @@ const routes = [
   {
     path: '/kitchen',
     name: 'KitchenView',
-    component: Oders
+    component: KitchenPage
+  },
+  {
+  path: '/restaurant',
+  name: 'restaurantView',
+  component: RestaurantPage
   }
-  
+
 
 ];
 

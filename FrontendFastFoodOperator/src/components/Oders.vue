@@ -3,7 +3,7 @@
         <div class="order-list">
             <h2>New Orders</h2>
             <ul>
-                <li v-for="order in newOrders" :key="order.id" class="new">
+                <li v-for="order in newOrders" :key="order.id" class="new" @click="moveToCooking(order.id)" >
                     <p>Order number: {{ order.id }}</p>
                     <p>Pizzas:</p>
                     <ul>
