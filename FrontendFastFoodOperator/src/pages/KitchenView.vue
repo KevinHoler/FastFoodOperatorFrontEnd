@@ -3,88 +3,46 @@
       <div class="order-column">
         <h2>Inkomna Ordrar</h2>
         <OrderCard class="order-column-incoming"
-          v-for="order in inkomnaOrdrar"
+          v-for="order in store.inkomnaOrdrar"
           :key="order.id"
           :order="order"
-          @click="startOrder(order.id)"
+          @click="store.startOrder(order.id)"
         />
       </div>
   
       <div class="order-column">
         <h2>Påbörjade Ordrar</h2>
         <OrderCard class="order-column-started"
-          v-for="order in paborjadeOrdrar"
+          v-for="order in store.paborjadeOrdrar"
           :key="order.id"
           :order="order"
-          @click="completeOrder(order.id)"
+          @click="store.completeOrder(order.id)"
         />
       </div>
   
       <div class="order-column">
         <h2>Färdiga Ordrar</h2>
         <OrderCard class="order-column-done"
-          v-for="order in fardigaOrdrar"
+          v-for="order in store.fardigaOrdrar"
           :key="order.id"
           :order="order"
-          @click="pickupOrder(order.id)"
+          @click="store.pickupOrder(order.id)"
         />
       </div>
     </div>
   </template>
   
   <script setup>
-  import { ref, computed, onMounted } from 'vue'
-  import axios from 'axios'
+  import { onMounted } from 'vue'
+  import { useOrdersStore } from '@/stores/useOrdersStore.js'
   import OrderCard from '@/components/OrderCard.vue'
   
-  const allOrders = ref([])
+  const store = useOrdersStore()
   
-  onMounted(async () => {
-  const res = await axios.get('https://localhost:7259/orders/allOrders')
-  allOrders.value = res.data.map(order => ({
-    ...order,
-    pizzas: order.pizzas || [],
-    drinks: order.drinks || [],
-    extras: order.extras || [],
-    notes: order.notes || null
-  }))
-})
-  
-  const inkomnaOrdrar = computed(() =>
-  allOrders.value.filter(o => !o.isStartedInKitchen && !o.isCooked)
-)
-
-const paborjadeOrdrar = computed(() =>
-  allOrders.value.filter(o => o.isStartedInKitchen && !o.isCooked)
-)
-
-const fardigaOrdrar = computed(() =>
-  allOrders.value.filter(o => o.isCooked && !o.isPickedUp)
-)
-  const startOrder = async (orderId) => {
-  const res = await axios.put(`https://localhost:7259/orders/${orderId}/IsStartedInKitchen`)
-  updateOrder(res.data)
-}
-
-const completeOrder = async (orderId) => {
-  const res = await axios.put(`https://localhost:7259/orders/${orderId}/DoneInKitchen`)
-  updateOrder(res.data)
-}
-
-const pickupOrder = async (orderId) => {
-  const res = await axios.put(`https://localhost:7259/orders/${orderId}/IsCollectedByCustomer`)
-  updateOrder(res.data)
-}
-
-const updateOrder = (updatedOrder) => {
-  console.log('Updating order:', updatedOrder)
-  allOrders.value = allOrders.value.map(order =>
-    order.id === updatedOrder.id ? updatedOrder : order
-  )
-  console.log('Updated orders:', allOrders.value)
-}
-
-
+  onMounted(() => {
+    store.fetchOrders()
+    store.connectWebSocket()
+  })
   </script>
   
   <style scoped>
@@ -111,4 +69,3 @@ const updateOrder = (updatedOrder) => {
     border: solid green 5px;
   }
   </style>
-  

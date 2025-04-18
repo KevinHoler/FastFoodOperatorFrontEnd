@@ -29,7 +29,7 @@ export default {
   },
   watch: {
     totalPrice(newTotal) {
-      this.$emit('update-total', newTotal); // Emit the total price to the parent
+      this.$emit('update-total', newTotal);
     }
   },
   methods: {

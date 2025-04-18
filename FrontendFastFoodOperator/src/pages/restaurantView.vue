@@ -2,22 +2,14 @@
     <div class="container">
       <div class="column tillagas">
         <h1>Tillagas</h1>
-        <div
-          v-for="order in tillagasOrdrar"
-          :key="order.id"
-          class="order-id"
-        >
+        <div v-for="order in store.tillagasOrdrar" :key="order.id" class="order-id">
           Order #{{ order.id }}
         </div>
       </div>
   
       <div class="column pickup">
         <h1>Plocka upp</h1>
-        <div
-          v-for="order in plockaUppOrdrar"
-          :key="order.id"
-          class="order-id"
-        >
+        <div v-for="order in store.plockaUppOrdrar" :key="order.id" class="order-id">
           Order #{{ order.id }}
         </div>
       </div>
@@ -25,23 +17,15 @@
   </template>
   
   <script setup>
-  import { ref, computed, onMounted } from 'vue'
-  import axios from 'axios'
+  import { onMounted } from 'vue'
+  import { useOrdersStore } from '@/stores/useOrdersStore.js'
   
-  const allOrders = ref([])
+  const store = useOrdersStore()
   
-  onMounted(async () => {
-    const res = await axios.get('https://localhost:7259/orders/allOrders')
-    allOrders.value = res.data
+  onMounted(() => {
+    store.fetchOrders()
+    store.connectWebSocket()
   })
-  
-  const tillagasOrdrar = computed(() =>
-    allOrders.value.filter(order => order.isStartedInKitchen && !order.isCooked)
-  )
-  
-  const plockaUppOrdrar = computed(() =>
-    allOrders.value.filter(order => order.isCooked && !order.isPickedUp)
-  )
   </script>
   
   <style scoped>
@@ -72,4 +56,3 @@
     font-weight: bold;
   }
   </style>
-  
