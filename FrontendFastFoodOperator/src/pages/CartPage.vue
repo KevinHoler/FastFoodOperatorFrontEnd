@@ -4,7 +4,7 @@
         <p>Din beställning</p>
   </div>
   <NavComponent/>
-  <Cart :cart="cart" @remove="removeFromCart" />
+  <Cart :cart="cart" @remove="removeFromCart" @clear-cart="clearCart" />
 
 </template>
 
@@ -24,11 +24,11 @@ props: {
 methods: {
   removeFromCart(index) {
     this.cart.splice(index, 1);
+  },
+  clearCart() {
+    this.cart.splice(0);
   }
-},
-props: {
-  cart: Array
-},
+}
 }
 </script>
 

@@ -5,10 +5,10 @@
       <li v-for="(item, index) in cart" :key="index">
         <h3>{{ item.name }}</h3>
         <p>Price: {{ item.price }}kr</p>
-        <button @click="$emit('remove', index)">Remove</button>
+        <button @click="$emit('remove', index)">Ta bort</button>
       </li>
       <p>Total price: {{ totalPrice }}kr</p>
-      <button @click="createOrder">Create Order</button>
+      <button v-if="totalPrice > 0" @click="createOrder">Slutför beställning</button>
     </ul>
   </div>
 </template>
@@ -33,6 +33,10 @@ export default {
     }
   },
   methods: {
+    getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  },
   async createOrder() {
     const pizzaIds = this.cart
       .filter(item => item.type === 'pizza')
@@ -46,23 +50,31 @@ export default {
       .filter(item => item.type === 'extra')
       .map(item => item.id);
 
+    const diningOption = this.getCookie('diningOption');
+    const EatHere = diningOption === 'eatHere';
+
     const orderRequest = {
       pizzaIds,
       drinkIds,
-      extraIds
+      extraIds,
+      EatHere
     };
-
+    
     try {
       const response = await axios.post("https://localhost:7259/orders", orderRequest);
       console.log("Order created:", response.data);
       alert(response.data.toString());
 
-      this.$emit("clear-cart"); // Optional: reset cart
+      this.$emit("clear-cart");
     } catch (err) {
       console.error("Failed to create order", err);
       alert("There was a problem creating the order.");
     }
-  }
+   
+  },
+  clearCart() {
+      this.cart = [];
+    }
 }
 
 }

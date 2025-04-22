@@ -34,6 +34,7 @@ export const useOrdersStore = defineStore('orders', () => {
 
   const fetchOrders = async () => {
     const res = await axios.get('https://localhost:7259/orders/allOrders')
+    console.log(res.data);
     allOrders.value = res.data
   }
 

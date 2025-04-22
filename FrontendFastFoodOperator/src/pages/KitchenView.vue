@@ -43,6 +43,10 @@
     store.fetchOrders()
     store.connectWebSocket()
   })
+  setInterval(() => {
+    store.fetchOrders()
+  }, 500)
+
   </script>
   
   <style scoped>

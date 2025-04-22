@@ -1,6 +1,8 @@
 <template>
     <div class="order-card">
-      <p class="title"><strong>Order #{{ order.id }}</strong></p>
+      <p class="title"><strong>Order #{{ order.id }} </strong><p class="eat-here"> {{ order.eatHere ? 'Äta här' : 'Ta med' }}
+      </p></p>
+      
       <p v-if="order.pizzas && order.pizzas.length"></p>
       <ul v-if="order.pizzas && order.pizzas.length" class="pizza-ul"> 
         <li v-for="pizza in order.pizzas" :key="pizza.name" class="pizza-list">
@@ -8,10 +10,10 @@
         </li>
       </ul>
       <ul v-if="order.drinks && order.drinks.length" class="pizza-ul">
-  <li v-for="(drink, index) in order.drinks" :key="index" class="pizza-list">
-    {{ drink.name }} - <span class="pizza-i">{{ drink.size }}{{ drink.unit }}</span>
-  </li>
-</ul>
+        <li v-for="(drink, index) in order.drinks" :key="index" class="pizza-list">
+        {{ drink.name }} - <span class="pizza-i">{{ drink.size }}{{ drink.unit }}</span>
+         </li>
+      </ul>
       <p v-if="order.extras && order.extras.length">Extras: {{ order.extras.join(', ') }}</p>
       <p v-if="order.notes">Notes: {{ order.notes }}</p>
     </div>
@@ -28,7 +30,8 @@
         notes: null,
         isStartedInKitchen: false,
         isCooked: false,
-        isPickedUp: false
+        isPickedUp: false,
+        EatHere: true
       })
     }
   })
@@ -64,5 +67,12 @@
   text-align: left;
   padding-left: 0;
   margin: 0;
+}
+.eat-here{
+  font-weight: bold;
+  font-size: 8px;
+  color:black;
+  border: solid, 1px;
+
 }
   </style>

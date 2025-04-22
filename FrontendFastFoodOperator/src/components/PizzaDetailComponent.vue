@@ -27,6 +27,7 @@ import axios from "axios";
 import NavComponent from '@/components/NavComponent.vue';
 
 export default {
+  props: ['cart'],
   data() {
     return {
       pizza: null

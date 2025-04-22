@@ -8,7 +8,7 @@
       </div>
   
       <div class="column pickup">
-        <h1>Plocka upp</h1>
+        <h1>Hämtas</h1>
         <div v-for="order in store.plockaUppOrdrar" :key="order.id" class="order-id">
           Order #{{ order.id }}
         </div>
@@ -26,6 +26,10 @@
     store.fetchOrders()
     store.connectWebSocket()
   })
+  setInterval(() => {
+    store.fetchOrders()
+  }, 500)
+
   </script>
   
   <style scoped>
