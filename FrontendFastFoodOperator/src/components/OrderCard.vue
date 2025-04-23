@@ -1,7 +1,7 @@
 <template>
     <div class="order-card">
-      <p class="title"><strong>Order #{{ order.id }} </strong><p class="eat-here"> {{ order.eatHere ? 'Äta här' : 'Ta med' }}
-      </p></p>
+      <p class="title"><strong>Order #{{ order.id }} </strong><br><span class="eat-here"> {{ order.eatHere ? 'Äta här' : 'Ta med' }}
+      </span></p>
       
       <p v-if="order.pizzas && order.pizzas.length"></p>
       <ul v-if="order.pizzas && order.pizzas.length" class="pizza-ul"> 
@@ -14,8 +14,12 @@
         {{ drink.name }} - <span class="pizza-i">{{ drink.size }}{{ drink.unit }}</span>
          </li>
       </ul>
-      <p v-if="order.extras && order.extras.length">Extras: {{ order.extras.join(', ') }}</p>
-      <p v-if="order.notes">Notes: {{ order.notes }}</p>
+      <ul v-if="order.extras && order.extras.length" class="pizza-ul">
+        <li v-for="(extra, index) in order.extras" :key="index" class="pizza-list">
+        {{ extra.name }}
+         </li>
+      </ul>
+      
     </div>
   </template>
   
@@ -70,7 +74,7 @@
 }
 .eat-here{
   font-weight: bold;
-  font-size: 8px;
+  font-size: 12px;
   color:black;
   border: solid, 1px;
 

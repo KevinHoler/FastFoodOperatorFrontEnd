@@ -10,6 +10,15 @@
             <button @click.stop="$emit('add-to-cart',  { ...drink, type: 'drink' })">Add to Cart</button>
           </li>
         </ul>
+        <ul>
+          <li v-for="extra in extras" :key="extra.id">
+            <h3>{{ extra.name }}</h3>
+            <p>{{ extra.info }}</p>
+            <p>Price: {{ extra.price }}kr</p> 
+            
+            <button @click.stop="$emit('add-to-cart',  { ...extra, type: 'extra' })">Add to Cart</button>
+          </li>
+        </ul>
       </div>
     </div>
   </template>
@@ -20,11 +29,13 @@
   export default {
     data() {
       return {
-        drinks: [] 
+        drinks: [] ,
+        extras: []
       };
     },
     created() {
-      this.fetchDrinks(); 
+      this.fetchDrinks(),
+      this.fetchExtras();
     },
     methods: {
       async fetchDrinks() {
@@ -33,6 +44,14 @@
           this.drinks = response.data; 
         } catch (error) {
           console.error("Error fetching drinks:", error); 
+        }
+      },
+      async fetchExtras(){
+        try{
+          const response = await axios.get("https://localhost:7259/extras");
+          this.extras = response.data;
+        } catch (error) {
+          console.error("Error fetching extras", error)
         }
       }
     }

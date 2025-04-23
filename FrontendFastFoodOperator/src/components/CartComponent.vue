@@ -7,14 +7,16 @@
         <p>Price: {{ item.price }}kr</p>
         <button @click="$emit('remove', index)">Ta bort</button>
       </li>
-      <p>Total price: {{ totalPrice }}kr</p>
-      <button v-if="totalPrice > 0" @click="createOrder">Slutför beställning</button>
     </ul>
+    <p>Total price: {{ totalPrice }}kr</p>
+    <button v-if="totalPrice > 0" @click="createOrder">Slutför beställning</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { useOrdersStore } from '@/stores/useOrdersStore.js'
+
 export default {
   props: {
     cart: {
@@ -34,51 +36,47 @@ export default {
   },
   methods: {
     getCookie(name) {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return match ? match[2] : null;
-  },
-  async createOrder() {
-    const pizzaIds = this.cart
-      .filter(item => item.type === 'pizza')
-      .map(item => item.id);
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    },
+    async createOrder() {
+      const pizzaIds = this.cart.filter(item => item.type === 'pizza').map(item => item.id);
+      const drinkIds = this.cart.filter(item => item.type === 'drink').map(item => item.id);
+      const extraIds = this.cart.filter(item => item.type === 'extra').map(item => item.id);
+      const eatHere = this.getCookie('diningOption') === 'eatHere';
 
-    const drinkIds = this.cart
-      .filter(item => item.type === 'drink')
-      .map(item => item.id);
+      const orderRequest = {
+        pizzaIds,
+        drinkIds,
+        extraIds,
+        EatHere: eatHere
+      };
 
-    const extraIds = this.cart
-      .filter(item => item.type === 'extra')
-      .map(item => item.id);
+      try {
 
-    const diningOption = this.getCookie('diningOption');
-    const EatHere = diningOption === 'eatHere';
+        const response = await axios.post("https://localhost:7259/orders", orderRequest);
+        const createdOrder = response.data;
+        console.log("Skapad order:", createdOrder);
+        this.$router.push({
+        name: 'ReceiptPage',
+        params: {
+          id: createdOrder.orderNr.toString()
+        }
+      });
 
-    const orderRequest = {
-      pizzaIds,
-      drinkIds,
-      extraIds,
-      EatHere
-    };
-    
-    try {
-      const response = await axios.post("https://localhost:7259/orders", orderRequest);
-      console.log("Order created:", response.data);
-      alert(response.data.toString());
 
-      this.$emit("clear-cart");
-    } catch (err) {
-      console.error("Failed to create order", err);
-      alert("There was a problem creating the order.");
-    }
-   
-  },
-  clearCart() {
+            this.$emit("clear-cart");
+
+      } catch (err) {
+        console.error("Failed to create order:", err);
+        alert("Det gick inte att skapa din beställning.");
+      }
+    },
+    clearCart() {
       this.cart = [];
     }
-}
-
-}
-
+  }
+};
 </script>
 
 <style scoped>

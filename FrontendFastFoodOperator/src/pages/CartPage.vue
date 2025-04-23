@@ -11,12 +11,14 @@
 <script>
 import Cart from '@/components/CartComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
+import ReceiptPage from './ReceiptPage.vue';
 
 export default {
 name: 'CartPage',
 components: {
   Cart,
-  NavComponent
+  NavComponent,
+  ReceiptPage
 },
 props: {
   cart: Array
