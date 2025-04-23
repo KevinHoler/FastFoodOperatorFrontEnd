@@ -45,9 +45,9 @@
   .order-card {
     background: white;
     border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    padding: 1px;
+    border-radius: 0px;
+    margin-bottom: 5px;
     cursor: pointer;
     transition: 0.2s ease;
     color: black;
@@ -77,6 +77,5 @@
   font-size: 12px;
   color:black;
   border: solid, 1px;
-
 }
   </style>

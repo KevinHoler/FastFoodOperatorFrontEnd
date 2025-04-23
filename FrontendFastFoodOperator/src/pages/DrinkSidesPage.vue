@@ -1,11 +1,10 @@
 <template>
     <div class="top-container">
       <h1>Beställ</h1>
-      <p>1. Välj Pizza</p>
+      <p>3. Dryck & Tillbehör</p>
     </div>
     <NavComponent/>
     <DrinksSidesComponent @add-to-cart="addToCart" />
-    <button @click="goToCartPage">Go to Cart Page</button>
 </template>
 
 
@@ -36,5 +35,8 @@ goToCartPage() {
 <style>
 .top-container{
 color: black;
+}
+footer{
+  position:sticky;
 }
 </style>

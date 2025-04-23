@@ -47,6 +47,7 @@ main {
 .content {
   display: flex;
   gap: 20px;
+  height: inherit;
 }
 
 @media (max-width: 768px) {

@@ -28,8 +28,6 @@
   </div>
 </template>
 
-
-
 <script>
 import axios from "axios";
 
@@ -69,10 +67,8 @@ export default {
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
 }
-
-/* .pizzaContainer {
-}  */
 
 .product {
   display: flex;

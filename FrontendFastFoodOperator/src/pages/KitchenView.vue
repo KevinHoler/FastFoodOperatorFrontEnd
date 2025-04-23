@@ -53,23 +53,28 @@
   .kitchen-view {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 0px;
     color: black;
   }
   
   .order-column {
     flex: 1;
     background: #f2f2f2;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 1px;
+    border-radius: 0px;
   }
   .order-column-incoming {
-    border: solid red 5px;
+    border: solid red 2px;
   }
   .order-column-started {
-    border: solid yellow 5px;
+    border: solid yellow 2px;
   }
   .order-column-done {
-    border: solid green 5px;
+    border: solid green 2px;
+  }
+  h2{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
   }
   </style>

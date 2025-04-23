@@ -36,27 +36,31 @@
   .container {
     display: flex;
     color: black;
-    gap: 20px;
   }
   
   .column {
     flex: 1;
     background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
   }
   
   .tillagas {
-    border: 3px solid orange;
+    height: 100vw;
+    border-right: solid 2px black;
+    text-align: center;
+    color: orange;
   }
   
   .pickup {
-    border: 3px solid green;
+    text-align: center;
+    color: green;
   }
   
   .order-id {
     font-size: 1.2em;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-weight: bold;
+  }
+  h1{
+    color: black;
   }
   </style>

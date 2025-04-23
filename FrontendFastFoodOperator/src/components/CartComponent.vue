@@ -1,14 +1,14 @@
 <template>
   <div class="cartcontainer">
-    <h2>Cart</h2>
     <ul>
       <li v-for="(item, index) in cart" :key="index">
-        <h3>{{ item.name }}</h3>
+        <h3>{{ item.name }} {{item.size }}{{ item.unit }}<button class="remove-item" @click="$emit('remove', index)">×</button></h3>
         <p>Price: {{ item.price }}kr</p>
-        <button @click="$emit('remove', index)">Ta bort</button>
+        
       </li>
     </ul>
-    <p>Total price: {{ totalPrice }}kr</p>
+    <p v-if="totalPrice > 0">Pris: {{ totalPrice }}kr</p>
+    <p v-else>Varukorg tom</p>
     <button v-if="totalPrice > 0" @click="createOrder">Slutför beställning</button>
   </div>
 </template>
@@ -63,8 +63,6 @@ export default {
           id: createdOrder.orderNr.toString()
         }
       });
-
-
             this.$emit("clear-cart");
 
       } catch (err) {
@@ -86,5 +84,15 @@ export default {
   margin-top: 20px;
   width: 300px;
   color: black;
+}
+.remove-item{
+  border: 0px;
+  padding: 0px;
+  margin-left: 5px;
+  color: red;
+  text-align: top;
+}
+.remove-item:hover{
+  cursor: pointer;
 }
 </style>
