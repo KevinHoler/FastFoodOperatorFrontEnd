@@ -5,7 +5,6 @@
     </div>
         <NavComponent/>
         <PizzaList @add-to-cart="addToCart" />
-        <button @click="goToCartPage">Go to Cart Page</button>
 </template>
 
 

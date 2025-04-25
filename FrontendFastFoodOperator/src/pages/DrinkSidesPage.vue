@@ -5,7 +5,6 @@
     </div>
     <NavComponent/>
     <DrinksSidesComponent @add-to-cart="addToCart" />
-    <button @click="goToCartPage">Go to Cart Page</button>
 </template>
 
 
@@ -36,5 +35,8 @@ goToCartPage() {
 <style>
 .top-container{
 color: black;
+}
+footer{
+  position:sticky;
 }
 </style>

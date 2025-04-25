@@ -1,24 +1,31 @@
 <template>
-  <div class="orderPizzaContainer">
-    
-   
+  <div class="orderPizzaContainer"> 
     <div class="pizzaContainer">
       <ul class="productContainer">
         <li class="product" v-for="pizza in pizzas" :key="pizza.id">
           <div>
-            <img :src="'./src/assets/pizzaimg/pizza' + pizza.id + '.jpeg'" :alt="pizza.name" />
+            <img :src="'./src/assets/pizzaimg/pizza' + pizza.id + '.jpeg'" :alt="pizza.name" @click="goToPizzaPage(pizza.id)" />
           </div>
           <div class="productInfo">
             <h3 class="pizzaName">{{ pizza.name }}</h3>
             <p>Price: {{ pizza.price }}kr</p>
-            <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> TA INTE BORT DENNA -->
+
+            <!-- Dropdown to select the pizza base (Thin, Thick, Gluten-Free) -->
+            <div class="base-selector">
+          <label for="base">Choose Base:</label>
+          <select v-model="pizza.selectedBase">
+            <option value="Thin">Thin</option>
+            <option value="Thick">Thick</option>
+            <option value="Gluten-Free">Gluten-Free</option>
+          </select>
+        </div>
+
+        <button @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Add to Cart</button>
           </div>
         </li>
       </ul>
     </div>
   </div>
- 
-
 </template>
 
 <script>
@@ -36,34 +43,32 @@ export default {
   methods: {
     async fetchPizzas() {
       try {
-        const response = await axios.get("https://localhost:7259/pizzas"); // Change this if the backend URL is different
+        const response = await axios.get("https://localhost:7259/pizzas"); 
         this.pizzas = response.data;
+        this.pizzas = response.data.map(pizza => ({
+  ...pizza,
+  selectedBase: 'Thin'
+}));
+
       } catch (error) {
         console.error("Error fetching pizzas:", error);
       }
     },
-    goToPizzaPage() {
-        this.$router.push({ name: 'Pizza' });
-    },
-    goToCartPage() {
-        this.$router.push({ name: 'Cart' });
-    },
-    goToDrinkPage() {
-        this.$router.push({name: 'DrinksSides'}) 
-      }
+    goToPizzaPage(pizzaId) {
+      this.$router.push({ name: 'PizzaDetails', params: { id: pizzaId } });
+    }
   }
 };
 </script>
+
 
 <style scoped>
 .orderPizzaContainer {
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
 }
-
-/* .pizzaContainer {
-}  */
 
 .product {
   display: flex;
