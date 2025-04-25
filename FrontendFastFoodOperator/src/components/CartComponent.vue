@@ -79,20 +79,83 @@ export default {
 
 <style scoped>
 .cartcontainer {
-  border: 1px solid #ccc;
-  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f9f9f9;
+  border: 2px dashed #ccc;
+  padding: 20px;
   margin-top: 20px;
-  width: 300px;
+  width: 100%; /* Full bredd */
   color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 647px; /* Samma höjd som productContainer */
+  overflow-y: scroll;
 }
-.remove-item{
-  border: 0px;
-  padding: 0px;
-  margin-left: 5px;
+
+.cartcontainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.cartcontainer::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+.cartcontainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 189, 126, 0.730);
+}
+
+.cartcontainer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cartcontainer li {
+  border-bottom: 1px dotted #aaa;
+  padding: 6px 0; /* mindre padding */
+}
+
+.cartcontainer h3 {
+  font-size: 14px; /* mindre text */
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartcontainer p {
+  margin: 2px 0 4px; /* mindre marginaler */
+  font-size: 12px; /* mindre text */
+}
+
+
+.remove-item {
+  border: none;
+  background: transparent;
   color: red;
-  text-align: top;
-}
-.remove-item:hover{
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
 }
+
+.remove-item:hover {
+  color: darkred;
+}
+
+.cartcontainer button {
+  background-color: rgba(0, 189, 126, 0.730);
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: inherit;
+  color: white;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.cartcontainer button:hover {
+  background-color: rgba(0, 189, 126, 1);
+}
+
 </style>
