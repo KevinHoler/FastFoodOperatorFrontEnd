@@ -49,7 +49,8 @@ export default {
         pizzaIds,
         drinkIds,
         extraIds,
-        EatHere: eatHere
+        EatHere: eatHere,
+        totalPrice: this.totalPrice
       };
 
       try {
