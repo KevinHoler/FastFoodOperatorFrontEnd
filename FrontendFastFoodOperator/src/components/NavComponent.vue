@@ -8,9 +8,9 @@
     </div> -->
      <div class="categoryContainer">
         <a @click="goToPizzaPage">Pizza</a>
-        <a @click="goToDrinkPage">Dryck & Tillbehör</a>
+        <a @click="goToDrinkPage">Dryck</a>
+        <a @click="goToSidesPage">Tillbehör</a>
         <a @click="goToCartPage">Kassa</a>
-        <a href="/pizza">Veckans Deals</a>
     </div>
   </template>
   
@@ -25,14 +25,17 @@
         this.$router.push({ name: 'Cart' });
       },
       goToDrinkPage() {
-        this.$router.push({name: 'DrinksSides'}) 
+        this.$router.push({name: 'Drinks'}) 
+      },
+      goToSidesPage() {
+        this.$router.push({name: 'Sides'}) 
       }
     }
   }
   </script>
   
   <style scoped>
-  .nav-content {
+  /* .nav-content {
     width: 100%;
     background-color: #989898; 
     padding: 5px 0;
@@ -64,11 +67,20 @@
   
   .buttonContainer button:hover {
     background-color: #555;
-  }
+  } */
   .categoryContainer {
   background-color: #333;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  height: 35px;
+}
+
+.categoryContainer a {
+  cursor: pointer;
 }
   </style>
   

@@ -4,8 +4,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/HomePage.vue';
 import PizzaPage from './pages/PizzaPage.vue';
 import CartPage from './pages/CartPage.vue';
-import DrinkSidesPage from './pages/DrinkSidesPage.vue';
+import DrinksPage from './pages/DrinksPage.vue';
 import { compile } from 'vue';
+import SidesPage from './pages/SidesPage.vue';
+
 
 // Skapa dina rutter
 const routes = [
@@ -25,9 +27,14 @@ const routes = [
     component: CartPage
   },
   {
-    path: '/drinksides',
-    name: 'DrinksSides',
-    component: DrinkSidesPage
+    path: '/drinks',
+    name: 'Drinks',
+    component: DrinksPage
+  },
+  {
+    path: '/sides',
+    name: 'Sides',
+    component: SidesPage
   }
 ];
 

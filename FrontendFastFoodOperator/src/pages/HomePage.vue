@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .homeContainer {
   height: 100%;
   display: flex;
@@ -38,6 +38,10 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 100px;
+  /* font-weight: 900;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace */
 }
 
 .greetingContainer {
@@ -51,6 +55,8 @@ export default {
   font-size: 40px;
   font-weight: 900;
   letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+
   font-family: 'Courier New', Courier, monospace;
 }
 

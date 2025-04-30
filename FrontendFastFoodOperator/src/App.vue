@@ -42,6 +42,8 @@ main {
   background: white;
   height: 100%;
   width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {

@@ -8,7 +8,7 @@
 
 </template>
 
-<script>
+<script scoped>
 import Cart from '@/components/CartComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
 
