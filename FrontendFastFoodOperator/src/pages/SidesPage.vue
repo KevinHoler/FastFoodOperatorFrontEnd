@@ -1,31 +1,30 @@
+
 <template>
     <div class="topInfoContainer">
       <h1 class="orderText">Beställ</h1>
       <p class="choosePizzaText">1. Välj Pizza</p>
     </div>
         <NavComponent/>
-        <PizzaList @add-to-cart="addToCart" />
-        <!-- <button @click="goToCartPage">Go to Cart Page</button> -->
+        <SidesComponent @add-to-cart="addToCart" />
 </template>
 
-
 <script>
+import SidesComponent from '@/components/SidesComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
-import PizzaList from '@/components/PizzaList.vue';
 
 
 export default {
-    name: 'PizzaPage',
+    name: 'SidesPage',
     props: {
     cart: Array
   },
   components: {
-    PizzaList,
+    SidesComponent,
     NavComponent
   },
   methods: {
-    addToCart(pizza) {
-      this.cart.push(pizza);
+    addToCart(extra) {
+      this.cart.push(extra);
     },
     goToCartPage() {
         this.$router.push({ name: 'Cart' });
@@ -33,6 +32,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .topInfoContainer {
   padding: 20px;
