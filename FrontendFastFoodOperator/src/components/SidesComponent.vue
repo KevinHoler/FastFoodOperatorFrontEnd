@@ -2,7 +2,7 @@
   <ul class="productContainer">
     <li class="product" v-for="extra in Extras" :key="extra.id">
       <div class="imgContainer">
-        <img :src="'./src/assets/pizzaimg/drink' + extra.id + '.jpg'" :alt="extra.name" />
+        <img :src="'./src/assets/pizzaimg/extra' + extra.id + '.jpg'" :alt="extra.name" />
       </div>
       <div class="productInfo">
         <h3 class="productName">{{ extra.name }}</h3>
@@ -85,10 +85,7 @@ export default {
 img {
   width: 180px;
   height: 100%;
-  object-fit: contain;
-  border-bottom: 1px solid rgb(210, 210, 210);
-  border-top: 1px solid rgb(210, 210, 210);
-
+  object-fit: cover;
 }
 
 .productInfo {

@@ -8,9 +8,7 @@
           <div class="productInfo">
             <h3 class="productName">{{ pizza.name }}</h3>
             <p class="productPrice">Price: {{ pizza.price }}kr</p>
-            <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> TA INTE BORT DENNA -->
-            <h3 class="pizzaName">{{ pizza.name }}</h3>
-            <p>Price: {{ pizza.price }}kr</p>
+            <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> -->
 
             <!-- Dropdown to select the pizza base (Thin, Thick, Gluten-Free) -->
             <div class="base-selector">
