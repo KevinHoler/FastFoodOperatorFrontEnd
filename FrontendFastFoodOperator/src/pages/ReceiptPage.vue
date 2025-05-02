@@ -1,5 +1,5 @@
 <template>
-    <div class="receipt" v-if="order"> <div>
+    <!-- <div class="receipt" v-if="order"> <div>
       <h2>Tack för din beställning!</h2>
       <p>Ordernummer: {{ order.orderNr }}</p>
   
@@ -22,6 +22,65 @@
     </div>
     <div v-else>
       <p>Hämtar kvitto...</p>
+    </div> -->
+    <div class="receipt" v-if="order">
+      <div>
+        <h2>Tack för din beställning!</h2>
+        <p>Ordernummer: {{ order.orderNr }}</p>
+      </div>
+      <span class="divider"></span>
+      <div class="orgInfoContainer">
+        <div>
+          <h3>FastFoodOperator AB</h3>
+        </div>
+        <div class="dateAndOrgNr">
+          <p>Datum: {{ new Date(order.dateOfOrder).toLocaleString() }}</p>
+          <p>Org nr</p>
+        </div>
+      </div>
+      <span class="divider"></span>
+      <div>
+        <p>Varor</p>
+        <ul>
+          <li v-for="(pizza, index) in order.pizzas" :key="'pizza-' + index">
+            🍕 {{ pizza.name }} - {{ pizza.price }} kr
+          </li>
+          <li v-for="(drink, index) in order.drinks" :key="'drink-' + index">
+            🥤 {{ drink.name }} - {{ drink.size }}{{ drink.unit }} - {{drink.price}}kr
+          </li>
+          <li v-for="(extra, index) in order.extras" :key="'extra-' + index">
+            🧀  {{ extra.name }} - {{ extra.price }}kr
+          </li>
+        </ul>
+      </div>
+    <span class="divider"></span>
+      <div class="priceAndTaxContainer">
+        <div class="row">
+          <p>Totalt:</p>
+          <p> {{ totalPrice }}kr</p>
+        </div>
+        <div class="row">
+          <p>Varav moms 0%</p>
+          <p>0 kr</p>
+        </div>
+        <div class="row">
+          <p>Varav moms 6%</p>
+          <p>0 kr</p>
+        </div>
+        <div class="row">
+          <p>Varav moms 12%</p>
+          <p>{{ vatAmount }} kr</p>
+        </div>
+        <div class="row">
+          <p>Varav moms 25%</p>
+          <p>0 kr</p>
+        </div>
+      </div>
+      <span class="divider"></span>
+      <div>
+        <p> {{ order.eatHere ? 'Äter här' : 'Tas med' }}</p>
+        <button @click="goToHome">Ny beställning</button>
+      </div>
     </div>
 
   </template>
@@ -33,7 +92,8 @@
     name: 'ReceiptPage',
     data() {
       return {
-        order: null
+        order: null,
+        vatAmount: 0,
       };
     },
     computed: {
@@ -56,6 +116,13 @@
   } catch (err) {
     console.error("Kunde inte hämta ordern:", err);
   }
+  const totalPrice = this.totalPrice;
+  try {
+    const res = await axios.get(`https://localhost:7259/api/tax/vat/${totalPrice}`);
+    this.vatAmount = res.data;
+  } catch (error) {
+    console.error("Could not fetch VAT:", error);
+  }
 },
 methods: {
     goToHome() {
@@ -69,8 +136,41 @@ methods: {
   <style scoped>
   .receipt {
     padding: 20px;
-    border: 1px solid #ccc;
     color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .orgInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dateAndOrgNr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .divider {
+    display: block;
+    height: 0.5px;
+    width: 100%;
+    background-color: rgb(143, 143, 143);
+    margin: 20px 0;
+  }
+
+  .priceAndTaxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
   }
   </style>
   
