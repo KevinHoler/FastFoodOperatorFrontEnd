@@ -7,7 +7,7 @@
             <div class="productInfo">
               <h3 class="productName">{{ drink.name }}</h3>
               <p class="productPrice">Price: {{ drink.price }}kr</p> 
-              <!-- <button @click="$emit('add-to-cart', drink)">Add to Cart</button> -->
+              <button @click="$emit('add-to-cart', { ...drink, type: 'drink' })">Add to Cart</button>
             </div>
           </li>
         </ul>
@@ -60,6 +60,7 @@
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
+  color: black;
 }
 
 .productContainer::-webkit-scrollbar {

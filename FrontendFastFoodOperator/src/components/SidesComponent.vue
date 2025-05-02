@@ -2,12 +2,12 @@
   <ul class="productContainer">
     <li class="product" v-for="extra in Extras" :key="extra.id">
       <div class="imgContainer">
-        <img :src="'./src/assets/pizzaimg/drink' + extra.id + '.jpg'" :alt="extra.name" />
+        <img :src="'./src/assets/pizzaimg/extra' + extra.id + '.jpg'" :alt="extra.name" />
       </div>
       <div class="productInfo">
         <h3 class="productName">{{ extra.name }}</h3>
         <p class="productPrice">Price: {{ extra.price }}kr</p> 
-        <!-- <button @click="$emit('add-to-cart', drink)">Add to Cart</button> -->
+        <button @click="$emit('add-to-cart', { ...extra, type: 'extra' })">Add to Cart</button>
       </div>
     </li>
   </ul>
@@ -61,6 +61,7 @@ export default {
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;
+  color: black;
 }
 
 .productContainer::-webkit-scrollbar {

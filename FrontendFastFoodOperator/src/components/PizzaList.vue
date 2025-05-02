@@ -9,18 +9,17 @@
             <h3 class="productName">{{ pizza.name }}</h3>
             <p class="productPrice">Price: {{ pizza.price }}kr</p>
             <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> TA INTE BORT DENNA -->
-            <h3 class="pizzaName">{{ pizza.name }}</h3>
-            <p>Price: {{ pizza.price }}kr</p>
+            
 
             <!-- Dropdown to select the pizza base (Thin, Thick, Gluten-Free) -->
-            <div class="base-selector">
+            <!-- <div class="base-selector">
           <label for="base">Choose Base:</label>
           <select v-model="pizza.selectedBase">
             <option value="Thin">Thin</option>
             <option value="Thick">Thick</option>
             <option value="Gluten-Free">Gluten-Free</option>
           </select>
-        </div>
+        </div> -->
 
         <button @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Add to Cart</button>
           </div>
@@ -178,6 +177,7 @@ export default {
   position: relative;
   height: 100%;
   overflow: hidden;
+  color: black;
 }
 
 .product {
