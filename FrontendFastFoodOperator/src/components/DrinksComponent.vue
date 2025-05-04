@@ -103,5 +103,5 @@ img {
 .productPrice {
   font-size: 14px;
 }
-  </style>
+</style>
   
