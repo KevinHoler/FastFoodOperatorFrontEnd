@@ -41,7 +41,8 @@ html, body {
 main {
   background: white;
   height: 100%;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
 }
@@ -53,8 +54,9 @@ main {
 }
 
 @media (max-width: 768px) {
-  .content {
-    flex-direction: column;
+  main {
+    width: 100%;
+    max-width: none;
   }
 }
 </style>

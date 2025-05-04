@@ -24,7 +24,7 @@
       <p>Hämtar kvitto...</p>
     </div> -->
     <div class="receipt" v-if="order">
-      <div>
+      <div class="orderNrContainer">
         <h2>Tack för din beställning!</h2>
         <p>Ordernummer: {{ order.orderNr }}</p>
       </div>
@@ -34,8 +34,8 @@
           <h3>FastFoodOperator AB</h3>
         </div>
         <div class="dateAndOrgNr">
-          <p>Datum: {{ new Date(order.dateOfOrder).toLocaleString() }}</p>
-          <p>Org nr</p>
+          <p>Datum: {{ new Date(order.timeOfOrder).toLocaleString() }}</p>
+          <p>Org: 559123-3838</p>
         </div>
       </div>
       <span class="divider"></span>
@@ -57,7 +57,7 @@
       <div class="priceAndTaxContainer">
         <div class="row">
           <p>Totalt:</p>
-          <p> {{ totalPrice }}kr</p>
+          <p> {{ totalPrice }} kr</p>
         </div>
         <div class="row">
           <p>Varav moms 0%</p>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <span class="divider"></span>
-      <div>
+      <div class="lastRowOfReceipt">
         <p> {{ order.eatHere ? 'Äter här' : 'Tas med' }}</p>
         <button @click="goToHome">Ny beställning</button>
       </div>
@@ -142,8 +142,15 @@ methods: {
     align-items: center;
   }
 
+  .orderNrContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .orgInfoContainer {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 10px;
   }
@@ -151,6 +158,7 @@ methods: {
   .dateAndOrgNr {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
   }
 
   .divider {
@@ -170,6 +178,11 @@ methods: {
   .row {
     display: flex;
     justify-content: space-between;
+    gap: 50px;
+  }
+
+  .lastRowOfReceipt {
+    display: flex;
     gap: 50px;
   }
   </style>
