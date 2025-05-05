@@ -62,6 +62,7 @@
     background: #f2f2f2;
     padding: 1px;
     border-radius: 0px;
+    text-align: left;
   }
   .order-column-incoming {
     border: solid red 2px;

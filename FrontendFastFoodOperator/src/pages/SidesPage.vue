@@ -2,7 +2,7 @@
 <template>
     <div class="topInfoContainer">
       <h1 class="orderText">Beställ</h1>
-      <p class="choosePizzaText">1. Välj Pizza</p>
+      <p class="choosePizzaText">3. Välj tillbehör</p>
     </div>
         <NavComponent/>
         <SidesComponent @add-to-cart="addToCart" />

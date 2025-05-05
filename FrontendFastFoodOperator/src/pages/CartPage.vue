@@ -1,41 +1,42 @@
 <template>
-  <div class="top-container">
-        <h1>Kassa</h1>
-        <p>Din beställning</p>
-  </div>
-  <NavComponent/>
-  <Cart :cart="cart" @remove="removeFromCart" @clear-cart="clearCart" />
-
+  <div class="topInfoContainer">
+      <h1 class="orderText">Kassa</h1>
+      <p class="choosePizzaText">Din beställning</p>
+    </div>
+  <NavComponent />
+  <Cart :cart="cartStore.cart" @remove="removeFromCart" @clear-cart="clearCart" />
 </template>
 
-<script scoped>
-import Cart from '@/components/CartComponent.vue';
-import NavComponent from '@/components/NavComponent.vue';
-import ReceiptPage from './ReceiptPage.vue';
+<script setup>
+import Cart from '@/components/CartComponent.vue'
+import NavComponent from '@/components/NavComponent.vue'
+import { useCartStore } from '@/stores/useCartStore'
 
-export default {
-name: 'CartPage',
-components: {
-  Cart,
-  NavComponent,
-  ReceiptPage
-},
-props: {
-  cart: Array
-},
-methods: {
-  removeFromCart(index) {
-    this.cart.splice(index, 1);
-  },
-  clearCart() {
-    this.cart.splice(0);
-  }
+const cartStore = useCartStore()
+
+function removeFromCart(index) {
+  cartStore.removeFromCart(index)
 }
+
+function clearCart() {
+  cartStore.clearCart()
 }
 </script>
+<style scoped>
+.topInfoContainer {
+  padding: 20px;
+  color: #333;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+}
+.orderText {
+  font-size: 33px;
+  font-weight: 900;
+  text-decoration-line: underline;
+}
 
-<style>
-.top-container{
-color: black;
+.choosePizzaText {
+  font-size: 18px;
 }
 </style>

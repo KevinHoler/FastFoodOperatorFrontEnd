@@ -1,18 +1,16 @@
 <template>
     <div class="topInfoContainer">
       <h1 class="orderText">Beställ</h1>
-      <p class="chooseDrinkText">1. Välj dryck</p>
+      <p class="chooseDrinkText">2. Välj dryck</p>
     </div>
     <NavComponent/>
     <DrinksComponent @add-to-cart="addToCart" />
-    <!-- <button @click="goToCartPage">Go to Cart Page</button> -->
 </template>
 
 
 <script>
 import DrinksComponent from '@/components/DrinksComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
-
 
 export default {
 name: 'Drinks',
@@ -33,6 +31,7 @@ goToCartPage() {
 }
 }
 </script>
+
 <style scoped>
 .topInfoContainer {
   padding: 20px;

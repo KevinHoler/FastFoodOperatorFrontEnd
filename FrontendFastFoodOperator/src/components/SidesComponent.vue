@@ -6,34 +6,41 @@
       </div>
       <div class="productInfo">
         <h3 class="productName">{{ extra.name }}</h3>
-        <p class="productPrice">Price: {{ extra.price }}kr</p> 
-        <button @click="$emit('add-to-cart', { ...extra, type: 'extra' })">Add to Cart</button>
+        <p class="productPrice">Pris: {{ extra.price }} kr</p>
+        <button class="cart-btn" @click="addExtraToCart(extra)">Lägg till i kundvagn</button>
       </div>
     </li>
   </ul>
 </template>
 
-
 <script>
 import axios from "axios";
+import { useCartStore } from "@/stores/useCartStore";
 
 export default {
   data() {
     return {
-      Extras: [] 
+      Extras: []
     };
   },
   created() {
-    this.fetchExtras(); 
+    this.fetchExtras();
   },
   methods: {
     async fetchExtras() {
       try {
-        const response = await axios.get("https://localhost:7259/extras"); 
-        this.Extras = response.data; 
+        const response = await axios.get("https://localhost:7259/extras");
+        this.Extras = response.data;
       } catch (error) {
-        console.error("Error fetching extras:", error); 
+        console.error("Error fetching extras:", error);
       }
+    },
+    addExtraToCart(extra) {
+      const cartStore = useCartStore();
+      cartStore.addToCart({
+        ...extra,
+        type: "extra"
+      });
     }
   }
 };
@@ -43,7 +50,8 @@ export default {
 .product {
   display: flex;
   background: rgb(210, 210, 210);
-  height: 135px;  cursor: pointer;
+  height: 135px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -73,8 +81,7 @@ export default {
 }
 
 .productContainer::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 189, 126, 0.730)
-
+  background-color: rgba(0, 189, 126, 0.730);
 }
 
 .imgContainer {
@@ -89,7 +96,6 @@ img {
   object-fit: contain;
   border-bottom: 1px solid rgb(210, 210, 210);
   border-top: 1px solid rgb(210, 210, 210);
-
 }
 
 .productInfo {
@@ -104,4 +110,20 @@ img {
 .productPrice {
   font-size: 14px;
 }
-  </style>
+.cart-btn{
+  background-color: rgba(0, 189, 126, 0.730);
+  border: none;
+  padding: 5px 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: inherit;
+  color: white;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.cart-btn:active{
+  transform: scale(0.95);
+  box-shadow: inset 2px 4px  rgba(0, 189, 126, 0.228);
+}
+</style>
