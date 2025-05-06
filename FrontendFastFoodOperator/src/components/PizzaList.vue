@@ -7,7 +7,7 @@
           </div>
           <div class="productInfo">
             <h3 class="productName">{{ pizza.name }}</h3>
-            <p class="productPrice">Price: {{ pizza.price }}kr</p>
+            <p class="productPrice">Pris: {{ pizza.price }}kr</p>
             <!-- <button @click="$emit('add-to-cart', pizza)">Add to Cart</button> -->
 
             <!-- Dropdown to select the pizza base (Thin, Thick, Gluten-Free) -->
@@ -20,7 +20,7 @@
           </select>
         </div> -->
 
-        <button @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Add to Cart</button>
+        <button class="cartBtn" @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Lägg till i varukorg</button>
           </div>
         </li>
       </ul>
@@ -183,7 +183,6 @@ export default {
   display: flex;
   background: rgb(210, 210, 210);
   height: 135px;
-  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -335,6 +334,24 @@ img {
   font-family: 'Courier New', Courier, monospace;
   color: rgba(0, 189, 126, 0.730);
   cursor: pointer;
+}
+
+
+.cartBtn {
+  border: 2px solid #333;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  cursor: pointer;
+}
+
+.cartBtn:hover {
+  background: rgb(193, 193, 193);
 }
 
 </style>

@@ -6,8 +6,8 @@
       </div>
       <div class="productInfo">
         <h3 class="productName">{{ extra.name }}</h3>
-        <p class="productPrice">Price: {{ extra.price }}kr</p> 
-        <button @click="$emit('add-to-cart', { ...extra, type: 'extra' })">Add to Cart</button>
+        <p class="productPrice">Pris: {{ extra.price }}kr</p> 
+        <button class="cartBtn" @click="$emit('add-to-cart', { ...extra, type: 'extra' })">Lägg till i varukorg</button>
       </div>
     </li>
   </ul>
@@ -90,7 +90,7 @@ img {
 }
 
 .productInfo {
-  padding: 15px;
+  padding: 15px 0 15px 15px;
 }
 
 .productName {
@@ -100,5 +100,22 @@ img {
 
 .productPrice {
   font-size: 14px;
+}
+
+.cartBtn {
+  border: 2px solid #333;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  cursor: pointer;
+}
+
+.cartBtn:hover {
+  background: rgb(193, 193, 193);
 }
 </style>

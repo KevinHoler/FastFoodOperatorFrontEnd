@@ -3,11 +3,11 @@
     <ul>
       <li v-for="(item, index) in cart" :key="index">
         <h3>{{ item.name }} {{item.size }}{{ item.unit }}<button class="remove-item" @click="$emit('remove', index)">×</button></h3>
-        <p>Price: {{ item.price }}kr</p>
+        <p>Pris: {{ item.price }}kr</p>
         
       </li>
     </ul>
-    <p v-if="totalPrice > 0">Pris: {{ totalPrice }}kr</p>
+    <p v-if="totalPrice > 0">Totalt: {{ totalPrice }}kr</p>
     <p v-else>Varukorg tom</p>
     <button v-if="totalPrice > 0" @click="createOrder">Slutför beställning</button>
   </div>

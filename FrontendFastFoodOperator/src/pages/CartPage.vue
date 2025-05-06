@@ -1,10 +1,14 @@
 <template>
-  <div class="top-container">
-        <h1>Kassa</h1>
-        <p>Din beställning</p>
-  </div>
+    <div class="topInfoContainer">
+      <h1 class="orderText">Varukorg</h1>
+      <p class="chooseDrinkText">Slutför beställning</p>
+    </div>
   <NavComponent/>
-  <Cart :cart="cart" @remove="removeFromCart" @clear-cart="clearCart" />
+  <Cart 
+    :cart="cart" 
+    @remove="removeFromCart" 
+    @clear-cart="clearCart" 
+  />
 
 </template>
 
@@ -29,13 +33,26 @@ methods: {
   },
   clearCart() {
     this.cart.splice(0);
-  }
+  },
 }
 }
 </script>
 
 <style>
-.top-container{
-color: black;
+.topInfoContainer {
+  padding: 20px;
+  color: #333;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+}
+.orderText {
+  font-size: 33px;
+  font-weight: 900;
+  text-decoration-line: underline;
+}
+
+.chooseDrinkText {
+  font-size: 18px;
 }
 </style>
