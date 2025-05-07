@@ -4,12 +4,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './pages/HomePage.vue';
 import PizzaPage from './pages/PizzaPage.vue';
 import CartPage from './pages/CartPage.vue';
-import DrinkSidesPage from './pages/DrinkSidesPage.vue';
+import DrinksPage from './pages/DrinksPage.vue';
 import PizzaDetails from './components/PizzaDetailComponent.vue';
 import { compile } from 'vue';
 import KitchenPage from './pages/KitchenView.vue';
 import RestaurantPage from './pages/restaurantView.vue';
 import ReceiptPage from './pages/ReceiptPage.vue';
+import SidesPage from './pages/SidesPage.vue';
+
 
 // Skapa dina rutter
 const routes = [
@@ -29,9 +31,14 @@ const routes = [
     component: CartPage
   },
   {
-    path: '/drinksides',
-    name: 'DrinksSides',
-    component: DrinkSidesPage
+    path: '/drinks',
+    name: 'Drinks',
+    component: DrinksPage
+  },
+  {
+    path: '/sides',
+    name: 'Sides',
+    component: SidesPage
   },
   {
     path: '/pizza/:id',

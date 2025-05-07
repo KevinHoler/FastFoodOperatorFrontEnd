@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .homeContainer {
   height: 100%;
   display: flex;
@@ -38,6 +38,11 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 100px;
+  width: 100%;
+  /* font-weight: 900;
+  letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace */
 }
 
 .greetingContainer {
@@ -51,6 +56,8 @@ export default {
   font-size: 40px;
   font-weight: 900;
   letter-spacing: 0.0892857143em;
+  text-transform: uppercase;
+
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -91,8 +98,8 @@ export default {
 }
 
 .lineBetweenButtons {
-  width: 2px; /* Adjust thickness of the line */
-  height: 68px; /* Adjust height to match button size */
-  background: rgb(69, 69, 69); /* Line color */
+  width: 2px;
+  height: 68px;
+  background: rgb(69, 69, 69);
 }
 </style>

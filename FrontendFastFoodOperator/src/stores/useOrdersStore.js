@@ -75,7 +75,6 @@ export const useOrdersStore = defineStore('orders', () => {
     fetchOrders,
     connectWebSocket,
     startOrder,
-
     completeOrder,
     pickupOrder,
   }
