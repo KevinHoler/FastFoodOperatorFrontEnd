@@ -6,7 +6,7 @@
           v-for="order in store.inkomnaOrdrar"
           :key="order.id"
           :order="order"
-          @click="store.startOrder(order.id)"
+          @click="store.startOrder(order.orderNr)"
         />
       </div>
   
@@ -16,7 +16,7 @@
           v-for="order in store.paborjadeOrdrar"
           :key="order.id"
           :order="order"
-          @click="store.completeOrder(order.id)"
+          @click="store.completeOrder(order.orderNr)"
         />
       </div>
   
@@ -26,7 +26,7 @@
           v-for="order in store.fardigaOrdrar"
           :key="order.id"
           :order="order"
-          @click="store.pickupOrder(order.id)"
+          @click="store.pickupOrder(order.orderNr)"
         />
       </div>
     </div>

@@ -3,14 +3,14 @@
       <div class="column tillagas">
         <h1>Tillagas</h1>
         <div v-for="order in store.tillagasOrdrar" :key="order.id" class="order-id">
-          Order #{{ order.id }}
+          Order #{{ order.orderNr }}
         </div>
       </div>
   
       <div class="column pickup">
         <h1>Hämtas</h1>
         <div v-for="order in store.plockaUppOrdrar" :key="order.id" class="order-id">
-          Order #{{ order.id }}
+          Order #{{ order.orderNr }}
         </div>
       </div>
     </div>

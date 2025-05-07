@@ -63,7 +63,7 @@ async function createOrder() {
 
     router.push({
       name: 'ReceiptPage',
-      params: { id: createdOrder.orderNr.toString() }
+      params: { id: createdOrder.id.toString() }
     });
   } catch (err) {
     console.error("Failed to create order:", err);
