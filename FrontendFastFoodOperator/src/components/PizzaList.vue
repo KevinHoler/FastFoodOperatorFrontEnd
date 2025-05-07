@@ -20,6 +20,28 @@
           </select>
         </div>
 
+         <!-- Dropdown for selecting toppings -->
+         <div class="topping-selector">
+              <label for="topping">Choose Toppings:</label>
+              <!-- 'multiple' allows selecting multiple toppings -->
+              <select v-model="pizza.selectedToppings" multiple @change="handleToppingChange(pizza)">
+                <option disabled value="">Choose a topping</option>
+                <option v-for="ingredient in ingredients" :key="ingredient.id" :value="ingredient.id">
+                  {{ ingredient.name }} - {{ ingredient.price }} kr
+                </option>
+              </select>
+            </div>
+<!-- Display selected toppings and allow to remove -->
+<div class="selected-toppings">
+              <strong>Selected Toppings:</strong>
+              <ul>
+                <li v-for="(topping, index) in pizza.selectedToppings" :key="index">
+                  {{ topping }} 
+                  <button @click="removeTopping(pizza, index)">Remove</button>
+                </li>
+              </ul>
+            </div>
+
         <button @click.stop="$emit('add-to-cart',  { ...pizza, type: 'pizza' })">Add to Cart</button>
           </div>
         </li>
@@ -34,11 +56,13 @@ import axios from "axios";
 export default {
   data() {
     return {
-      pizzas: []
+      pizzas: [],
+      ingredients: [],
     };
   },
   created() {
     this.fetchPizzas();
+    this.fetchIngredients();
   },
   methods: {
     async fetchPizzas() {
@@ -47,13 +71,38 @@ export default {
         this.pizzas = response.data;
         this.pizzas = response.data.map(pizza => ({
   ...pizza,
-  selectedBase: 'Thin'
+  selectedBase: 'Thin',
+  selectedToppings: []
 }));
 
       } catch (error) {
         console.error("Error fetching pizzas:", error);
       }
     },
+// Fetch available toppings (ingredients) from the backend
+async fetchIngredients() {
+      try {
+        const response = await axios.get("https://localhost:7259/ingredients");
+        this.ingredients = response.data;
+      } catch (error) {
+        console.error("Error fetching ingredients:", error);
+      }
+    },
+
+    // Handle topping change when the user selects/deselects toppings
+    handleToppingChange(pizza) {
+      // Reset selected toppings first
+      pizza.selectedToppings = [];
+
+      // Loop through the selected topping ids and add corresponding names to the pizza's selectedToppings
+      pizza.selectedToppings.forEach(toppingId => {
+        const selectedIngredient = this.ingredients.find(ingredient => ingredient.id === toppingId);
+        if (selectedIngredient && !pizza.selectedToppings.includes(selectedIngredient.name)) {
+          pizza.selectedToppings.push(selectedIngredient.name);
+        }
+      });
+    },
+
     goToPizzaPage(pizzaId) {
       this.$router.push({ name: 'PizzaDetails', params: { id: pizzaId } });
     }
