@@ -38,6 +38,7 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 100px;
+  width: 100%;
   /* font-weight: 900;
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;

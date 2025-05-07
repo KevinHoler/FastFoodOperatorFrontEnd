@@ -35,7 +35,7 @@ goToCartPage() {
 <style scoped>
 .topInfoContainer {
   padding: 20px;
-  color:black;
+  color: #333;
   letter-spacing: 0.0892857143em;
   text-transform: uppercase;
   font-family: 'Courier New', Courier, monospace;

@@ -158,7 +158,6 @@ export default {
   display: flex;
   background: rgb(210, 210, 210);
   height: 135px;
-  cursor: pointer;
   transition: 0.3s;
 }
 
